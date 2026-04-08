@@ -1,0 +1,133 @@
+public class LinearSearch {
+    public static int search(int arr[], int key) {
+        for(int i = 0; i < arr.length; i++) {
+            if(arr[i] == key)
+                return i;
+        }
+        return -1;
+    }
+}
+
+
+import static org.junit.Assert.*;
+import org.junit.Test;
+
+public class LinearSearchTest {
+
+    @Test
+    public void testFound() {
+        int arr[] = {10, 20, 30};
+        assertEquals(1, LinearSearch.search(arr, 20));
+    }
+
+    @Test
+    public void testNotFound() {
+        int arr[] = {10, 20, 30};
+        assertEquals(-1, LinearSearch.search(arr, 50));
+    }
+}
+
+
+
+
+
+public class HighestNumber {
+    public static int findMax(int a, int b, int c) {
+        if(a >= b && a >= c)
+            return a;
+        else if(b >= a && b >= c)
+            return b;
+        else
+            return c;
+    }
+}
+
+import static org.junit.Assert.*;
+import org.junit.Test;
+
+public class HighestNumberTest {
+
+    @Test
+    public void testMax1() {
+        assertEquals(30, HighestNumber.findMax(10, 20, 30));
+    }
+
+    @Test
+    public void testMax2() {
+        assertEquals(50, HighestNumber.findMax(50, 20, 30));
+    }
+}
+
+
+public class BankAccount {
+    double balance = 0;
+
+    void deposit(double amount) {
+        balance += amount;
+    }
+
+    boolean withdraw(double amount) {
+        if(amount <= balance) {
+            balance -= amount;
+            return true;
+        }
+        return false;
+    }
+
+    double getBalance() {
+        return balance;
+    }
+}
+
+import static org.junit.Assert.*;
+import org.junit.Test;
+
+public class BankAccountTest {
+
+    @Test
+    public void testDeposit() {
+        BankAccount acc = new BankAccount();
+        acc.deposit(100);
+        assertEquals(100, acc.getBalance(), 0.001);
+    }
+
+    @Test
+    public void testWithdrawSuccess() {
+        BankAccount acc = new BankAccount();
+        acc.deposit(100);
+        assertTrue(acc.withdraw(50));
+        assertEquals(50, acc.getBalance(), 0.001);
+    }
+
+    @Test
+    public void testWithdrawFail() {
+        BankAccount acc = new BankAccount();
+        acc.deposit(50);
+        assertFalse(acc.withdraw(100));
+    }
+}
+
+
+
+import static org.junit.Assert.*;
+import org.junit.Test;
+
+public class GreetingAPITest {
+
+    @Test
+    public void testGreeting() {
+        String result = GreetingAPI.getGreeting("Praveen");
+        assertEquals("Hello, Praveen! Welcome!", result);
+    }
+}
+
+
+public class GreetingAPI {
+    public static String getGreeting(String name) {
+        return "Hello, " + name + "! Welcome!";
+    }
+
+    public static void main(String[] args) {
+        System.out.println(getGreeting("Praveen"));
+    }
+}
